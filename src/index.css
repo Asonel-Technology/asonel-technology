@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white font-sans text-brand-brown antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid #ff914d;
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: #ff914d;
+    color: #1e1200;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
