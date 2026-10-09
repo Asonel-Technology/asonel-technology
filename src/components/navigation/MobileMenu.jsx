@@ -7,7 +7,7 @@ function Chevron({ open }) {
     <svg
       viewBox="0 0 20 20"
       aria-hidden="true"
-      className={`h-4 w-4 transition-transform motion-reduce:transition-none ${open ? "rotate-180" : ""}`}
+      className={`h-4 w-4 transition-transform duration-200 motion-reduce:transition-none ${open ? "rotate-180" : ""}`}
       fill="none"
       stroke="currentColor"
       strokeWidth="1.75"
@@ -51,10 +51,16 @@ function MobileSection({ item, onNavigate }) {
       </div>
       {open ? (
         <ul id={panelId} className="mb-3 border-l border-white/20 pl-4">
-          {item.children.map((child) => {
+          {item.children.map((child, index) => {
             const current = isNavActive(child.to, pathname, hash);
+            const showGroup = child.group && child.group !== item.children[index - 1]?.group;
             return (
               <li key={child.to}>
+                {showGroup ? (
+                  <p className="pb-1 pt-3 text-xs font-semibold uppercase tracking-[0.14em] text-white/60">
+                    {child.group}
+                  </p>
+                ) : null}
                 <Link
                   to={child.to}
                   onClick={onNavigate}

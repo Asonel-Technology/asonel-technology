@@ -1,8 +1,8 @@
-# Asnol Technology Website
+# Asonel Technology Website
 
 ## Overview
 
-This is a responsive static React website for Asnol Technology.
+This is a responsive static React website for Asonel Technology.
 
 The site presents the company, its services, and supporting pages. Content such as services, team information, and blog posts is stored in JavaScript data files inside the project.
 

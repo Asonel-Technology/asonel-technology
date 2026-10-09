@@ -17,7 +17,7 @@ export default function Button({
   children,
   ...props
 }) {
-  const classes = `inline-flex min-h-11 items-center justify-center rounded-md px-5 py-2.5 text-center text-sm font-semibold transition-colors motion-reduce:transition-none ${variants[variant]} ${className}`;
+  const classes = `inline-flex min-h-11 items-center justify-center rounded-md px-5 py-2.5 text-center text-sm font-semibold transition-colors duration-200 motion-reduce:transition-none active:opacity-90 ${variants[variant]} ${className}`;
 
   if (to) {
     return (

@@ -22,7 +22,7 @@ export default function Logo({ variant = "onDark", className = "" }) {
   return (
     <span className={`inline-flex items-center gap-2.5 ${tone} ${className}`}>
       <span className="h-6 w-1.5 shrink-0 bg-brand-orange" aria-hidden="true" />
-      <span className="font-serif text-xl leading-none tracking-tight">Asnol</span>
+      <span className="font-serif text-xl leading-none tracking-tight">Asonel</span>
       <span className="hidden text-[0.68rem] font-semibold uppercase tracking-[0.16em] sm:inline">
         Technology
       </span>

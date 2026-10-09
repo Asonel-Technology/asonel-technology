@@ -10,15 +10,30 @@
 //   image: "/images/team/first-last.jpg",
 // }
 
-export const teamMembers = [];
+export const teamMembers = [
+  {
+    id: "assumpta-uwamariya",
+    name: "Assumpta Uwamariya",
+    role: "CEO and co-founder",
+    bio: "",
+    image: "",
+  },
+  {
+    id: "nelly-igihozo",
+    name: "Nelly Igihozo",
+    role: "Co-founder",
+    bio: "",
+    image: "",
+  },
+];
 
 export const teamIntro = {
   eyebrow: "Our team",
-  title: "People you can work with directly.",
-  text: "Introductions for the Asnol Technology team will be added here.",
+  title: "People you can work with directly",
+  text: "Assumpta Uwamariya and Nelly Igihozo lead Asonel Technology.",
   image: {
-    src: "/images/team/team-main.jpg",
-    alt: "The Asnol Technology team working together",
+    src: "",
+    alt: "The Asonel Technology team",
   },
   cta: { label: "Meet our team", to: "/team" },
 };

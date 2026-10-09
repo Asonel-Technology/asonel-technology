@@ -60,14 +60,16 @@ export default function Navbar() {
   return (
     <header ref={headerRef} className="sticky top-0 z-50 bg-brand-brown">
       <nav aria-label="Primary">
-        <Container className="flex h-16 items-center justify-between gap-4">
-          <Link
-            to="/"
-            aria-label="Asnol Technology, home"
-            className="shrink-0 rounded-md"
-          >
-            <Logo />
-          </Link>
+        <Container className="flex h-16 items-center">
+          <div className="flex min-w-0 flex-1">
+            <Link
+              to="/"
+              aria-label="Asonel Technology, home"
+              className="shrink-0 rounded-md"
+            >
+              <Logo />
+            </Link>
+          </div>
 
           <ul className="hidden items-center gap-1 lg:flex">
             {navigation.map((item) => (
@@ -85,7 +87,7 @@ export default function Navbar() {
                   <Link
                     to={item.to}
                     aria-current={pathname === item.to ? "page" : undefined}
-                    className={`rounded-md px-3 py-2 text-sm font-medium ${
+                    className={`nav-link rounded-md px-3 py-2 text-sm font-medium ${
                       pathname === item.to
                         ? "text-brand-orange"
                         : "text-white hover:text-brand-orange"
@@ -99,33 +101,36 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <button
-            type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md text-white lg:hidden"
-            aria-expanded={mobileOpen}
-            aria-controls={menuId}
-            onClick={() => setMobileOpen((open) => !open)}
-          >
-            <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
-            {mobileOpen ? (
-              <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.75">
-                <path d="M6 6l12 12M18 6 6 18" strokeLinecap="round" />
-              </svg>
-            ) : (
-              <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.75">
-                <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
-              </svg>
-            )}
-          </button>
+          <div className="flex flex-1 justify-end">
+            <button
+              type="button"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-md text-white lg:hidden"
+              aria-expanded={mobileOpen}
+              aria-controls={menuId}
+              onClick={() => setMobileOpen((open) => !open)}
+            >
+              <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
+              {mobileOpen ? (
+                <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.75">
+                  <path d="M6 6l12 12M18 6 6 18" strokeLinecap="round" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.75">
+                  <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
+                </svg>
+              )}
+            </button>
+          </div>
         </Container>
 
         <div
           id={menuId}
-          className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none lg:hidden ${
-            mobileOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-          }`}
+          className={`nav-drawer grid lg:hidden ${mobileOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
         >
-          <div className="min-h-0 overflow-hidden" inert={mobileOpen ? undefined : true}>
+          <div
+            className={`nav-drawer-panel min-h-0 overflow-hidden ${mobileOpen ? "opacity-100" : "opacity-0"}`}
+            inert={mobileOpen ? undefined : true}
+          >
             <MobileMenu
               key={pathname}
               items={navigation}

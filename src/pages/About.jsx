@@ -2,6 +2,7 @@ import AboutVisual from "../components/home/AboutVisual";
 import Button from "../components/common/Button";
 import Container from "../components/common/Container";
 import PageHeader from "../components/common/PageHeader";
+import Reveal from "../components/common/Reveal";
 import { company } from "../data/company";
 import usePageTitle from "../utils/usePageTitle";
 
@@ -14,7 +15,7 @@ export default function About() {
       <PageHeader eyebrow={aboutPage.eyebrow} title={aboutPage.title} text={aboutPage.intro} />
       <section aria-labelledby="about-story" className="bg-white">
         <Container className="grid items-start gap-12 py-16 lg:grid-cols-2 lg:gap-16 lg:py-24">
-          <div className="min-w-0">
+          <Reveal className="min-w-0">
             <h2 id="about-story" className="font-serif text-3xl leading-tight text-brand-brown sm:text-4xl">
               What we take on
             </h2>
@@ -46,11 +47,22 @@ export default function About() {
                 Meet our team
               </Button>
               <Button to="/contact" variant="outline" className="w-full sm:w-auto">
-                Talk to Us
+                Talk to us
               </Button>
             </div>
-          </div>
-          <AboutVisual />
+            <p className="mt-4 text-sm leading-relaxed text-brand-brown sm:text-base">
+              Or write to{" "}
+              <a
+                href={`mailto:${company.email}`}
+                className="font-semibold underline decoration-brand-brown/30 underline-offset-4"
+              >
+                {company.email}
+              </a>
+            </p>
+          </Reveal>
+          <Reveal delay={80}>
+            <AboutVisual />
+          </Reveal>
         </Container>
       </section>
     </>

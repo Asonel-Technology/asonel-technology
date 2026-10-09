@@ -2,6 +2,6 @@ import { useEffect } from "react";
 
 export default function usePageTitle(title) {
   useEffect(() => {
-    document.title = title ? `${title} · Asnol Technology` : "Asnol Technology";
+    document.title = title ? `${title} · Asonel Technology` : "Asonel Technology";
   }, [title]);
 }

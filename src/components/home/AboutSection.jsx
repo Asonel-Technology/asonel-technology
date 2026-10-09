@@ -1,164 +1,136 @@
-import { company } from "../../data/company";
-import Container from "../common/Container";
 import { Link } from "react-router-dom";
+import { company } from "../../data/company";
+import { teamMembers } from "../../data/team";
+import Container from "../common/Container";
+import Reveal from "../common/Reveal";
 
-const aboutImages = [
-  "/images/about/user1.jpg",
-  "/images/about/user2.jpg",
-  "/images/about/user3.jpg",
-  "/images/about/user4.jpg",
-  "/images/about/user5.jpg",
-  "/images/about/user6.jpg",
-];
+function initials(name) {
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
+}
 
-const features = [
-  {
-    title: "Future Ready Solutions",
-    text: "We build with technologies that scale and adapt as your business grows.",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Modern Tech Services",
-    text: "From web to mobile to custom software — delivered with clarity and care.",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5" />
-      </svg>
-    ),
-  },
+const pointIcons = [
+  <svg key="scope" viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
+    <path d="M8 7h8M8 12h8M8 17h5" strokeLinecap="round" />
+    <rect x="4" y="3" width="16" height="18" rx="2" />
+  </svg>,
+  <svg key="contact" viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
+    <circle cx="12" cy="8" r="3" />
+    <path d="M5.5 19.5a6.5 6.5 0 0 1 13 0" strokeLinecap="round" />
+  </svg>,
+  <svg key="code" viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
+    <path d="M9 8 5 12l4 4M15 8l4 4-4 4M13 6l-2 12" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>,
 ];
 
 export default function AboutSection() {
-  const { about } = company;
+  const { why, email, hero } = company;
 
   return (
     <section aria-labelledby="about-heading" className="bg-brand-sand">
       <Container className="py-16 sm:py-20 lg:py-28">
-        {/* Top: badge + heading + paragraph */}
+        <Reveal>
         <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
-          {/* Badge */}
           <div className="flex items-start">
             <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-brand-brown">
-              <svg className="h-3 w-3 text-brand-orange" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+              <svg className="h-3 w-3 text-brand-brown" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
                 <path d="M6 0l1.5 4.5H12L8.25 7.5 9.75 12 6 9l-3.75 3 1.5-4.5L0 4.5h4.5z" />
               </svg>
-              {about.eyebrow}
+              {why.eyebrow}
             </span>
           </div>
 
-          {/* Heading */}
           <div>
             <h2
               id="about-heading"
               className="font-serif text-3xl font-bold leading-tight text-brand-brown sm:text-4xl lg:text-5xl"
             >
-              Innovative And Trusted Partner For Your{" "}
-              <span className="text-brand-orange">Digital IT</span> Solutions.
+              {why.title}
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-brand-brown/70 sm:text-lg">
-              {about.paragraphs[0]}
-            </p>
+            <p className="mt-5 text-base leading-relaxed text-brand-brown/80 sm:text-lg">{why.text}</p>
           </div>
         </div>
+        </Reveal>
 
-        {/* Bottom: left image + right content */}
         <div className="mt-12 grid items-start gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
-          {/* Left tall image */}
-          <div className="overflow-hidden rounded-2xl">
-            <img
-              src={aboutImages[0]}
-              alt="Asnol Technology team collaborating"
-              className="aspect-[3/4] w-full object-cover"
-              loading="lazy"
-            />
-          </div>
-
-          {/* Right content */}
-          <div className="flex flex-col gap-6">
-            {/* Feature rows */}
-            {features.map((feature, i) => (
-              <div key={feature.title}>
-                <div className="flex items-start gap-4">
-                  {/* Icon circle */}
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-orange/10 text-brand-orange">
-                    {feature.icon}
-                  </div>
-                  {/* Title + divider + text */}
-                  <div className="grid flex-1 grid-cols-[1fr_auto_1fr] items-start gap-4">
-                    <h3 className="font-serif text-lg font-bold text-brand-brown sm:text-xl">
-                      {feature.title}
-                    </h3>
-                    <div className="mt-1 w-px self-stretch bg-brand-brown/20" aria-hidden="true" />
-                    <p className="text-sm leading-relaxed text-brand-brown/70">{feature.text}</p>
-                  </div>
-                </div>
-                {i < features.length - 1 && (
-                  <div className="mt-6 border-t border-brand-brown/10" />
-                )}
-              </div>
-            ))}
-
-            {/* Stats + avatars row */}
-            <div className="mt-2 flex flex-wrap items-center gap-6">
-              {/* Years experience card */}
-              <div className="rounded-2xl bg-white px-6 py-5 shadow-card">
-                <p className="font-serif text-4xl font-bold text-brand-brown">5+</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-brand-brown/60">
-                  Years Experience
-                </p>
-              </div>
-
-              {/* Avatars + trust text */}
-              <div>
-                <div className="flex -space-x-3">
-                  {aboutImages.slice(1, 5).map((src, i) => (
+          <Reveal>
+          <div className="rounded-2xl bg-brand-brown p-6 text-white sm:p-8">
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-orange">Leadership</p>
+            <ul className="mt-6 space-y-5">
+              {teamMembers.map((member) => (
+                <li key={member.id} className="flex items-center gap-4">
+                  {member.image ? (
                     <img
-                      key={i}
-                      src={src}
+                      src={member.image}
                       alt=""
-                      className="h-10 w-10 rounded-full border-2 border-white object-cover"
+                      className="h-14 w-14 shrink-0 rounded-full object-cover"
                     />
-                  ))}
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-brand-brown text-xs font-bold text-white">
-                    +
-                  </div>
-                </div>
-                <p className="mt-2 text-sm font-semibold text-brand-brown">
-                  <span className="text-brand-orange">50+</span> Active clients trust us for IT solutions
-                </p>
-              </div>
-            </div>
+                  ) : (
+                    <span
+                      className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white font-serif text-lg text-brand-brown"
+                      aria-hidden="true"
+                    >
+                      {initials(member.name)}
+                    </span>
+                  )}
+                  <span>
+                    <span className="block font-serif text-xl font-bold">{member.name}</span>
+                    <span className="mt-1 block text-sm text-white/80">{member.role}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          </Reveal>
 
-            {/* CTAs */}
+          <Reveal delay={80}>
+          <div className="flex flex-col gap-6">
+            <ul>
+              {why.points.map((point, index) => (
+                <li key={point.title} className={index > 0 ? "mt-6 border-t border-brand-brown/10 pt-6" : ""}>
+                  <div className="flex items-start gap-4">
+                    <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-orange/15 text-brand-brown">
+                      {pointIcons[index]}
+                    </span>
+                    <div>
+                      <h3 className="font-serif text-lg font-bold text-brand-brown sm:text-xl">{point.title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-brand-brown/80">{point.text}</p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
             <div className="flex flex-wrap gap-4">
               <Link
-                to={about.cta.to}
-                className="rounded-full bg-brand-orange px-7 py-3 text-sm font-bold uppercase tracking-widest text-white transition hover:bg-brand-orange-dark"
+                to="/about"
+                className="rounded-full bg-brand-orange px-7 py-3 text-sm font-bold uppercase tracking-widest text-brand-brown transition duration-200 hover:bg-brand-orange-dark motion-reduce:transition-none active:opacity-90"
               >
-                Learn More
+                About Asonel Technology
               </Link>
               <Link
-                to="/contact"
-                className="rounded-full bg-brand-brown px-7 py-3 text-sm font-bold uppercase tracking-widest text-white transition hover:opacity-80"
+                to={hero.primaryCta.to}
+                className="rounded-full bg-brand-brown px-7 py-3 text-sm font-bold uppercase tracking-widest text-white transition duration-200 hover:opacity-80 motion-reduce:transition-none active:opacity-90"
               >
-                Get Started
+                {hero.primaryCta.label}
               </Link>
             </div>
-
-            {/* Second image */}
-            <div className="overflow-hidden rounded-2xl">
-              <img
-                src={aboutImages[5]}
-                alt="Asnol Technology team in discussion"
-                className="aspect-[16/7] w-full object-cover"
-                loading="lazy"
-              />
-            </div>
+            <p className="text-sm leading-relaxed text-brand-brown">
+              Or write to{" "}
+              <a
+                href={`mailto:${email}`}
+                className="font-semibold underline decoration-brand-brown/30 underline-offset-4"
+              >
+                {email}
+              </a>
+            </p>
           </div>
+          </Reveal>
         </div>
       </Container>
     </section>

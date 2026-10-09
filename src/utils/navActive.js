@@ -9,7 +9,7 @@ export function isNavActive(to, pathname, hash) {
     return pathname === "/";
   }
 
-  return pathname === path;
+  return pathname === path && hash.length === 0;
 }
 
 export function isSectionActive(item, pathname, hash) {

@@ -10,20 +10,20 @@
 export const images = {
   logo: {
     src: "/images/logo/ASONEL Logo.png",
-    alt: "Asnol Technology",
+    alt: "Asonel Technology",
     width: 160,
     height: 40,
   },
   hero: {
     src: "/images/hero/hero-team.jpg",
-    alt: "Asnol Technology collaborators working on a software project",
+    alt: "",
   },
   about: {
     src: "",
-    alt: "People in conversation about a project at Asnol Technology",
+    alt: "People in conversation about a project at Asonel Technology",
   },
   team: {
-    src: "/images/team/team-main.jpg",
-    alt: "The Asnol Technology team working together",
+    src: "",
+    alt: "The Asonel Technology team",
   },
 };

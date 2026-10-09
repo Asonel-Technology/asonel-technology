@@ -15,10 +15,10 @@ export default function AboutVisual() {
   return (
     <div className="flex aspect-[4/3] flex-col justify-between rounded-xl bg-brand-brown p-6 text-white sm:p-8 lg:aspect-[5/4] lg:p-10">
       <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-orange">
-        Asnol Technology
+        Asonel Technology
       </p>
       <p className="max-w-sm font-serif text-3xl leading-tight text-balance sm:text-4xl">
-        Technology, explained while it is being built.
+        Technology, explained while it is being built
       </p>
       <dl className="grid grid-cols-1 gap-4 border-t border-white/20 pt-5 text-sm sm:grid-cols-2">
         <div>

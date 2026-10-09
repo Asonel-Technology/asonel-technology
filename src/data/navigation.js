@@ -1,5 +1,5 @@
 import { blogs } from "./blogs";
-import { services } from "./services";
+import { serviceGroups, services } from "./services";
 
 export const navigation = [
   { label: "Home", to: "/" },
@@ -7,8 +7,8 @@ export const navigation = [
     label: "About",
     to: "/about",
     children: [
-      { label: "About Us", to: "/about" },
-      { label: "Meet Our Team", to: "/team" },
+      { label: "About us", to: "/about" },
+      { label: "Meet our team", to: "/team" },
     ],
   },
   {
@@ -19,6 +19,7 @@ export const navigation = [
       ...services.map((service) => ({
         label: service.title,
         to: `/services#${service.slug}`,
+        group: serviceGroups.find((item) => item.id === service.groupId)?.menu,
       })),
     ],
   },

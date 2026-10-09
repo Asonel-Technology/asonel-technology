@@ -13,7 +13,7 @@ export default function Blogs() {
       <PageHeader
         eyebrow="Blog"
         title="Articles"
-        text="Notes on preparing, reviewing, and shipping software and websites."
+        text="Notes on planning and reviewing websites and software."
       />
       <Container className="py-12 sm:py-16">
         <ul className="divide-y divide-brand-brown/10 border-y border-brand-brown/10">
