@@ -1,5 +1,10 @@
 export const company = {
   name: "Asonel Technology",
+  social: [
+    { label: "Instagram", href: "https://www.instagram.com/" },
+    { label: "Twitter", href: "https://twitter.com/" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/" },
+  ],
   hero: {
     eyebrow: "Asonel Technology",
     title: "Innovative Solutions for a Modern World.",
@@ -48,6 +53,9 @@ export const company = {
     eyebrow: "Services",
     title: "Ways we can help.",
     text: "Websites, applications, software, and the design around them. Each engagement starts from the work you need done.",
+  },
+  closing: {
+    title: "Have a project for us? Let's talk and work together.",
   },
   servicesPage: {
     eyebrow: "Services",

@@ -10,12 +10,31 @@
 //   image: "/images/team/first-last.jpg",
 // }
 
-export const teamMembers = [];
+export const teamMembers = [
+  {
+    id: "assumpta-uwamariya",
+    name: "Assumpta Uwamariya",
+    role: "CEO and co-founder",
+    bio: "",
+    image: "/images/team/assumpta-uwamariya.jpg",
+    imagePosition: "center 24%",
+    imageScale: 1.2,
+  },
+  {
+    id: "nelly-igihozo",
+    name: "Nelly Igihozo",
+    role: "CEO and co-founder",
+    bio: "",
+    image: "/images/team/nelly-igihozo.jpg",
+    imagePosition: "center 32%",
+    imageScale: 1.26,
+  },
+];
 
 export const teamIntro = {
   eyebrow: "Our team",
   title: "People you can work with directly.",
-  text: "Introductions for the Asnol Technology team will be added here.",
+  text: "",
   image: {
     src: "/images/team/team-main.jpg",
     alt: "The Asnol Technology team working together",

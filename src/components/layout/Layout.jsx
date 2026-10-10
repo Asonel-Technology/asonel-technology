@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 export default function Layout() {
@@ -30,7 +31,7 @@ export default function Layout() {
       <main id="main" tabIndex={-1} className="flex-1 outline-none">
         <Outlet />
       </main>
-      {/* Footer is added on a separate branch. Render it here, below main. */}
+      <Footer />
     </div>
   );
 }
