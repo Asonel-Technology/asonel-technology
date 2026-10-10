@@ -1,5 +1,6 @@
 import Container from "../components/common/Container";
 import PageHeader from "../components/common/PageHeader";
+import ContactForm from "../components/contact/ContactForm";
 import usePageTitle from "../utils/usePageTitle";
 
 export default function Contact() {
@@ -12,10 +13,10 @@ export default function Contact() {
         title="Talk to us"
         text="Tell us about the work you have in mind."
       />
-      <Container className="py-14">
-        <p className="max-w-2xl text-base leading-relaxed text-brand-brown">
-          The message form is not available on this page yet, so nothing can be sent from here.
-        </p>
+      <Container className="py-14 sm:py-16 lg:py-20">
+        <div className="mx-auto max-w-2xl">
+          <ContactForm />
+        </div>
       </Container>
     </>
   );
