@@ -26,4 +26,8 @@ export const images = {
     src: "/images/team/team-main.jpg",
     alt: "The Asnol Technology team working together",
   },
+  aboutVideo: {
+    src: import.meta.env.VITE_CLOUDINARY_ABOUT_VIDEO_URL || "",
+    poster: "/images/about/user1.jpg",
+  },
 };
