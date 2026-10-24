@@ -1,4 +1,5 @@
 import { company } from "../../data/company";
+import { images } from "../../data/images";
 import Container from "../common/Container";
 import { Link } from "react-router-dom";
 
@@ -69,12 +70,26 @@ export default function AboutSection() {
         <div className="mt-12 grid items-start gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
           {/* Left tall image */}
           <div className="overflow-hidden rounded-2xl">
-            <img
-              src={aboutImages[0]}
-              alt="Asnol Technology team collaborating"
-              className="aspect-[3/4] w-full object-cover"
-              loading="lazy"
-            />
+            {images.about.video ? (
+              <video
+                src={images.about.video}
+                className="aspect-[3/4] w-full bg-brand-brown object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                preload="metadata"
+                aria-label="Asonel Technology"
+              />
+            ) : (
+              <img
+                src={aboutImages[0]}
+                alt="Asnol Technology team collaborating"
+                className="aspect-[3/4] w-full object-cover"
+                loading="lazy"
+              />
+            )}
           </div>
 
           {/* Right content */}

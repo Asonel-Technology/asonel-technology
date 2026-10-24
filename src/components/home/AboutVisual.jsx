@@ -1,6 +1,22 @@
 import { images } from "../../data/images";
 
 export default function AboutVisual() {
+  if (images.about.video) {
+    return (
+      <video
+        src={images.about.video}
+        className="aspect-[4/3] w-full rounded-xl bg-brand-brown object-cover lg:aspect-[5/4]"
+        autoPlay
+        muted
+        loop
+        playsInline
+        controls
+        preload="metadata"
+        aria-label="Asonel Technology"
+      />
+    );
+  }
+
   if (images.about.src) {
     return (
       <img
