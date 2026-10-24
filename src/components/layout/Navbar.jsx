@@ -121,11 +121,10 @@ export default function Navbar() {
 
         <div
           id={menuId}
-          className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none lg:hidden ${
-            mobileOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-          }`}
+          data-open={mobileOpen ? "true" : "false"}
+          className="mobile-drawer"
         >
-          <div className="min-h-0 overflow-hidden" inert={mobileOpen ? undefined : true}>
+          <div inert={mobileOpen ? undefined : true}>
             <MobileMenu
               key={pathname}
               items={navigation}

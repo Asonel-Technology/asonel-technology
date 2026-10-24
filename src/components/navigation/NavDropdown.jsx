@@ -7,7 +7,7 @@ function Chevron({ open }) {
     <svg
       viewBox="0 0 20 20"
       aria-hidden="true"
-      className={`h-4 w-4 transition-transform motion-reduce:transition-none ${open ? "rotate-180" : ""}`}
+      className={`h-4 w-4 transition-transform duration-200 motion-reduce:transition-none ${open ? "rotate-180" : ""}`}
       fill="none"
       stroke="currentColor"
       strokeWidth="1.75"
@@ -56,8 +56,9 @@ export default function NavDropdown({ item, open, onToggle, onClose }) {
 
       <div
         id={panelId}
-        hidden={!open}
-        className={`absolute top-full z-50 mt-2 w-72 border border-brand-brown/10 bg-white p-2 shadow-card ${
+        data-open={open ? "true" : "false"}
+        inert={open ? undefined : true}
+        className={`menu-panel absolute top-full z-50 mt-2 w-72 border border-brand-brown/10 bg-white p-2 shadow-card ${
           item.align === "end" ? "right-0" : "left-0"
         }`}
       >

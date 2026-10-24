@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { teamIntro, teamMembers } from "../../data/team";
 import Container from "../common/Container";
+import Rise from "../common/Rise";
 
 function initials(name) {
   return name
@@ -26,7 +27,7 @@ export default function TeamSection() {
     <section aria-labelledby="team-heading" className="bg-white">
       <Container className="py-16 sm:py-20 lg:py-28">
         <div className="rounded-[2rem] bg-brand-brown px-6 py-14 text-white sm:px-10 sm:py-16 lg:py-20">
-        <div className="mx-auto max-w-3xl text-center">
+        <Rise className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-brand-brown">
             <svg className="h-3 w-3 text-brand-orange" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
               <path d="M6 0l1.5 4.5H12L8.25 7.5 9.75 12 6 9l-3.75 3 1.5-4.5L0 4.5h4.5z" />
@@ -44,15 +45,20 @@ export default function TeamSection() {
               {teamIntro.text}
             </p>
           ) : null}
-        </div>
+        </Rise>
 
         <ol className="relative mx-auto mt-14 flex max-w-3xl flex-col items-center gap-14 sm:mt-16 sm:flex-row sm:justify-center sm:gap-24">
           <span
             className="absolute left-[22%] right-[22%] top-[6.5rem] hidden border-t border-dashed border-white/35 sm:block"
             aria-hidden="true"
           />
-          {teamMembers.map((member) => (
-            <li key={member.id} className="relative z-10 flex w-56 flex-col items-center text-center">
+          {teamMembers.map((member, index) => (
+            <Rise
+              as="li"
+              key={member.id}
+              delay={index}
+              className="relative z-10 flex w-56 flex-col items-center text-center"
+            >
               <div>
                 {member.image ? (
                   <span className="block h-44 w-44 overflow-hidden rounded-full ring-4 ring-white/15 sm:h-52 sm:w-52">
@@ -71,7 +77,7 @@ export default function TeamSection() {
               </div>
               <p className="mt-5 font-serif text-xl font-bold">{member.name}</p>
               <p className="mt-1 text-sm text-white/80">{member.role}</p>
-            </li>
+            </Rise>
           ))}
         </ol>
 

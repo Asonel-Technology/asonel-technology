@@ -1,22 +1,25 @@
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
+import useSmoothScroll, { scrollPage } from "../../utils/useSmoothScroll";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 export default function Layout() {
   const { pathname, hash } = useLocation();
+  useSmoothScroll();
 
   useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     if (hash) {
       const target = document.getElementById(decodeURIComponent(hash.slice(1)));
       if (target) {
-        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+        scrollPage(target, reduce);
         return;
       }
     }
 
-    window.scrollTo(0, 0);
+    scrollPage(0, true);
   }, [pathname, hash]);
 
   return (
@@ -29,7 +32,9 @@ export default function Layout() {
       </a>
       <Navbar />
       <main id="main" tabIndex={-1} className="flex-1 outline-none">
-        <Outlet />
+        <div key={pathname} className="page-enter">
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </div>
