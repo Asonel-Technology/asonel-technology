@@ -3,6 +3,7 @@ import { images } from "../../data/images";
 import Container from "../common/Container";
 import Rise from "../common/Rise";
 import { Link } from "react-router-dom";
+import { useRef, useState } from "react";
 
 const aboutImages = [
   "/images/about/user1.jpg",
@@ -33,6 +34,46 @@ const features = [
     ),
   },
 ];
+
+function VideoPlayer() {
+  const videoRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
+
+  function toggle() {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) { v.play(); setPlaying(true); }
+    else { v.pause(); setPlaying(false); }
+  }
+
+  return (
+    <div
+      className="relative overflow-hidden rounded-2xl bg-brand-brown cursor-pointer"
+      style={{ aspectRatio: "9/16" }}
+      onClick={toggle}
+    >
+      <video
+        ref={videoRef}
+        src={import.meta.env.VITE_CLOUDINARY_ABOUT_VIDEO_URL}
+        playsInline
+        className="h-full w-full object-cover"
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+        onEnded={() => setPlaying(false)}
+      />
+      {/* Centered play/pause button */}
+      {!playing && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-brand-brown shadow-lg">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="h-7 w-7 translate-x-0.5">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function AboutSection() {
   const { about } = company;
@@ -67,31 +108,10 @@ export default function AboutSection() {
           </Rise>
         </div>
 
-        {/* Bottom: left image + right content */}
+        {/* Bottom: left video + right content */}
         <div className="mt-12 grid items-start gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
-          {/* Left tall image */}
-          <Rise className="overflow-hidden rounded-2xl">
-            {images.about.video ? (
-              <video
-                src={images.about.video}
-                className="aspect-[3/4] w-full bg-brand-brown object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-                controls
-                preload="metadata"
-                aria-label="Asonel Technology"
-              />
-            ) : (
-              <img
-                src={aboutImages[0]}
-                alt="Asnol Technology team collaborating"
-                className="aspect-[3/4] w-full object-cover"
-                loading="lazy"
-              />
-            )}
-          </Rise>
+          {/* Left video — TikTok ratio 9/16 */}
+          <VideoPlayer />
 
           {/* Right content */}
           <Rise delay={1} className="flex flex-col gap-6">
