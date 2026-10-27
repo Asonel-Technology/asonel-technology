@@ -21,6 +21,7 @@ export const images = {
   about: {
     src: "",
     alt: "People in conversation about a project at Asnol Technology",
+    video: import.meta.env.VITE_CLOUDINARY_ABOUT_VIDEO_URL || "",
   },
   team: {
     src: "/images/team/team-main.jpg",

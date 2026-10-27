@@ -1,6 +1,7 @@
 import { company } from "../../data/company";
 import { services } from "../../data/services";
 import Container from "../common/Container";
+import Rise from "../common/Rise";
 import ServiceCard from "../services/ServiceCard";
 import { Link } from "react-router-dom";
 
@@ -12,7 +13,7 @@ export default function ServicesSection() {
       <Container className="py-16 sm:py-20 lg:py-28">
 
         {/* Header */}
-        <div className="mb-12 grid gap-8 lg:grid-cols-2 lg:items-end lg:gap-16">
+        <Rise className="mb-12 grid gap-8 lg:grid-cols-2 lg:items-end lg:gap-16">
           <div>
             {/* Badge */}
             <span className="inline-flex items-center gap-2 rounded-full bg-brand-sand px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-brand-brown">
@@ -32,14 +33,14 @@ export default function ServicesSection() {
           <p className="text-base leading-relaxed text-brand-brown/70 sm:text-lg lg:pb-2">
             {servicesSection.text}
           </p>
-        </div>
+        </Rise>
 
         {/* Cards grid — 2 columns */}
         <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           {services.map((service, index) => (
-            <li key={service.slug} className="min-w-0">
+            <Rise as="li" key={service.slug} delay={index % 2} className="min-w-0">
               <ServiceCard service={service} index={index} />
-            </li>
+            </Rise>
           ))}
         </ul>
 

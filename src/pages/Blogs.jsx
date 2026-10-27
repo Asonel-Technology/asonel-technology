@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Container from "../components/common/Container";
 import PageHeader from "../components/common/PageHeader";
+import Rise from "../components/common/Rise";
 import { blogs } from "../data/blogs";
 import { formatDate } from "../utils/formatDate";
 import usePageTitle from "../utils/usePageTitle";
@@ -17,8 +18,8 @@ export default function Blogs() {
       />
       <Container className="py-12 sm:py-16">
         <ul className="divide-y divide-brand-brown/10 border-y border-brand-brown/10">
-          {blogs.map((post) => (
-            <li key={post.id}>
+          {blogs.map((post, index) => (
+            <Rise as="li" key={post.id} delay={index}>
               <article className="py-6">
                 <p className="text-sm text-brand-brown">
                   {post.category}
@@ -34,7 +35,7 @@ export default function Blogs() {
                   {post.excerpt}
                 </p>
               </article>
-            </li>
+            </Rise>
           ))}
         </ul>
       </Container>
