@@ -8,7 +8,7 @@ export default function ServiceCard({ service, index, anchor = false }) {
   return (
     <article
       id={anchor ? service.slug : undefined}
-      className={`flex h-full scroll-mt-24 flex-col rounded-2xl p-6 sm:p-8 ${
+      className={`group flex h-full scroll-mt-24 flex-col rounded-2xl p-6 transition duration-500 hover:-translate-y-2 hover:shadow-[0_22px_50px_rgba(30,18,0,0.12)] motion-reduce:transition-none sm:p-8 ${
         isHighlighted ? "bg-brand-orange text-white" : "bg-white text-brand-brown"
       }`}
     >
@@ -47,7 +47,7 @@ export default function ServiceCard({ service, index, anchor = false }) {
           <img
             src={service.image}
             alt={service.title}
-            className="aspect-[4/3] w-full object-cover"
+            className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105 motion-reduce:transition-none"
             loading="lazy"
           />
         </div>

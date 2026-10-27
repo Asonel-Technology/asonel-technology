@@ -2,6 +2,7 @@ import AboutVisual from "../components/home/AboutVisual";
 import Button from "../components/common/Button";
 import Container from "../components/common/Container";
 import PageHeader from "../components/common/PageHeader";
+import Rise from "../components/common/Rise";
 import { company } from "../data/company";
 import usePageTitle from "../utils/usePageTitle";
 
@@ -14,7 +15,7 @@ export default function About() {
       <PageHeader eyebrow={aboutPage.eyebrow} title={aboutPage.title} text={aboutPage.intro} />
       <section aria-labelledby="about-story" className="bg-white">
         <Container className="grid items-start gap-12 py-16 lg:grid-cols-2 lg:gap-16 lg:py-24">
-          <div className="min-w-0">
+          <Rise className="min-w-0">
             <h2 id="about-story" className="font-serif text-3xl leading-tight text-brand-brown sm:text-4xl">
               What we take on
             </h2>
@@ -49,8 +50,10 @@ export default function About() {
                 Talk to Us
               </Button>
             </div>
-          </div>
-          <AboutVisual />
+          </Rise>
+          <Rise delay={1}>
+            <AboutVisual />
+          </Rise>
         </Container>
       </section>
     </>

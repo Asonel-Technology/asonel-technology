@@ -33,7 +33,7 @@ function Field({ id, label, error, children }) {
       </label>
       <div className="mt-2">{children}</div>
       {error ? (
-        <p id={`${id}-error`} className="mt-2 text-sm font-medium text-brand-brown">
+        <p id={`${id}-error`} className="motion-swap mt-2 text-sm font-medium text-brand-brown">
           {error}
         </p>
       ) : null}
@@ -99,7 +99,7 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div role="status" className="rounded-3xl bg-brand-sand px-6 py-12 text-center sm:px-10">
+      <div role="status" className="motion-swap rounded-3xl bg-brand-sand px-6 py-12 text-center sm:px-10">
         <h2 className="font-serif text-3xl font-bold text-brand-brown">Message sent.</h2>
         <p className="mx-auto mt-3 max-w-md text-base leading-relaxed text-brand-brown/80">
           We have your note and will reply by email.
@@ -192,12 +192,12 @@ export default function ContactForm() {
       </div>
 
       {status === "error" ? (
-        <p role="alert" className="mt-6 text-sm font-medium text-brand-brown">
+        <p role="alert" className="motion-swap mt-6 text-sm font-medium text-brand-brown">
           The message was not sent. Please try again.
         </p>
       ) : null}
       {status === "unconfigured" ? (
-        <p role="alert" className="mt-6 text-sm font-medium text-brand-brown">
+        <p role="alert" className="motion-swap mt-6 text-sm font-medium text-brand-brown">
           This form is not connected to an inbox yet, so the message was not sent.
         </p>
       ) : null}

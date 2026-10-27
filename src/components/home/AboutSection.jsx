@@ -1,5 +1,7 @@
 import { company } from "../../data/company";
+import { images } from "../../data/images";
 import Container from "../common/Container";
+import Rise from "../common/Rise";
 import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
 
@@ -82,17 +84,17 @@ export default function AboutSection() {
         {/* Top: badge + heading + paragraph */}
         <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
           {/* Badge */}
-          <div className="flex items-start">
+          <Rise className="flex items-start">
             <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-brand-brown">
               <svg className="h-3 w-3 text-brand-orange" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
                 <path d="M6 0l1.5 4.5H12L8.25 7.5 9.75 12 6 9l-3.75 3 1.5-4.5L0 4.5h4.5z" />
               </svg>
               {about.eyebrow}
             </span>
-          </div>
+          </Rise>
 
           {/* Heading */}
-          <div>
+          <Rise delay={1}>
             <h2
               id="about-heading"
               className="font-serif text-3xl font-bold leading-tight text-brand-brown sm:text-4xl lg:text-5xl"
@@ -103,7 +105,7 @@ export default function AboutSection() {
             <p className="mt-5 text-base leading-relaxed text-brand-brown/70 sm:text-lg">
               {about.paragraphs[0]}
             </p>
-          </div>
+          </Rise>
         </div>
 
         {/* Bottom: left video + right content */}
@@ -112,7 +114,7 @@ export default function AboutSection() {
           <VideoPlayer />
 
           {/* Right content */}
-          <div className="flex flex-col gap-6">
+          <Rise delay={1} className="flex flex-col gap-6">
             {/* Feature rows */}
             {features.map((feature, i) => (
               <div key={feature.title}>
@@ -192,7 +194,7 @@ export default function AboutSection() {
                 loading="lazy"
               />
             </div>
-          </div>
+          </Rise>
         </div>
       </Container>
     </section>

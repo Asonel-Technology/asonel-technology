@@ -1,7 +1,8 @@
 import { useEffect } from "react";
+import { company } from "../data/company";
 
 export default function usePageTitle(title) {
   useEffect(() => {
-    document.title = title ? `${title} · Asnol Technology` : "Asnol Technology";
+    document.title = title ? `${title} · ${company.name}` : company.name;
   }, [title]);
 }

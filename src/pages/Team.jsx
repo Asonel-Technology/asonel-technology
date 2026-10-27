@@ -1,5 +1,6 @@
 import Container from "../components/common/Container";
 import PageHeader from "../components/common/PageHeader";
+import Rise from "../components/common/Rise";
 import { teamIntro, teamMembers } from "../data/team";
 import usePageTitle from "../utils/usePageTitle";
 
@@ -34,8 +35,13 @@ export default function Team() {
             {teamIntro.eyebrow}
           </h2>
           <ul className="grid gap-5 sm:grid-cols-2">
-            {teamMembers.map((member) => (
-              <li key={member.id} className="flex items-center gap-4 rounded-2xl border border-brand-brown/10 p-6">
+            {teamMembers.map((member, index) => (
+              <Rise
+                as="li"
+                key={member.id}
+                delay={index}
+                className="flex items-center gap-4 rounded-2xl border border-brand-brown/10 p-6"
+              >
                 {member.image ? (
                   <span className="block h-16 w-16 shrink-0 overflow-hidden rounded-full">
                     <img
@@ -54,7 +60,7 @@ export default function Team() {
                   <span className="block font-serif text-xl font-bold text-brand-brown">{member.name}</span>
                   <span className="mt-1 block text-sm text-brand-brown/80">{member.role}</span>
                 </span>
-              </li>
+              </Rise>
             ))}
           </ul>
         </Container>
