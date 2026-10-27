@@ -3,7 +3,7 @@ export const company = {
   social: [
     { label: "Instagram", href: "https://www.instagram.com/" },
     { label: "Twitter", href: "https://twitter.com/" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/asonel-technology/" },
   ],
   hero: {
     eyebrow: "Asonel Technology",
